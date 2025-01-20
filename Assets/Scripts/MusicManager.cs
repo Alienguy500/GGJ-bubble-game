@@ -25,4 +25,8 @@ public class MusicManager : MonoBehaviour
     {
         tracks[trackIndex].mute = mute;
     }
+    public void SetTrackVolume(int trackIndex, float volume) // Volume can be anything from 0.0f to 1.0f
+    {
+        tracks[trackIndex].volume = volume;
+    }
 }

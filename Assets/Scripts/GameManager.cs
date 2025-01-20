@@ -12,6 +12,13 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera;
     public SoundManager soundManager;
     public MusicManager musicManager;
+
+    void Start()
+    {
+        instance = this;
+        soundManager = mainCamera.GetComponent<SoundManager>();
+        musicManager = mainCamera.GetComponent<MusicManager>();
+    }
     public int GetTimer()
     {
         return 1;
