@@ -5,16 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static MainMenuManager instance;
+    public static MainMenuManager Instance
     {
-        
+        get;
     }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject mainCamera;
+    public SoundManager soundManager;
+
+    void Start()
     {
-        
+        if (mainCamera != null)
+        {
+            soundManager = mainCamera.GetComponent<SoundManager>();
+        }
     }
 
     public void Play()
