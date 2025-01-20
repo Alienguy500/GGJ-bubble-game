@@ -23,6 +23,7 @@ public class PlayerControls : MonoBehaviour
     //Bools to keep track what state they are currently in
     private float rotX;
     float runTimer;
+    [SerializeField] float landTimer;
     public enum MoveState { IDLE, WALK, DASH, SNEAK, DEATH };
     private MoveState moveState;
 
@@ -39,10 +40,11 @@ public class PlayerControls : MonoBehaviour
     {
         if (manager.GetTimer() > 0)
         {
+
             playerMoveInput = new(0, 0, Input.GetAxis("Horizontal"));
             //Gets the camera's input and run its function
             //Jump Function
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && landTimer <= 0)
             {
                 //Check if the feet GameObject are on the ground that has a layer called 'Ground'
                 if (Physics.CheckSphere(feetPosition.position, 0.1f, floorMask))
@@ -50,11 +52,18 @@ public class PlayerControls : MonoBehaviour
                     Jump();
                 }
             }
-            if(Input.GetKeyDown(KeyCode.LeftControl))
+            if (landTimer > 0 && Physics.CheckSphere(feetPosition.position, 0.1f, floorMask))
+            {
+                rb.velocity = Vector3.zero;
+                landTimer -= Time.deltaTime;
+                controller.UpdateAnimations(playerMoveInput, true, false, false, false);
+                playerMoveInput = new(0, 0, 0);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift))
                 speed = 10;
             if (playerMoveInput == Vector3.zero && speed == 10)
                 runTimer -= Time.deltaTime;
-            if(runTimer <= 0)
+            if (runTimer <= 0)
             {
                 speed = 5;
                 runTimer = 0.125f;
@@ -73,6 +82,7 @@ public class PlayerControls : MonoBehaviour
     void Jump()
     {
         rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        landTimer = 0.65f;
     }
     void MovePlayer()
     {
@@ -81,7 +91,7 @@ public class PlayerControls : MonoBehaviour
         //Setting the Y velocity aswell
         MoveDir.y = rb.velocity.y;
         //Calculates and then applies then input with rigidbody's Physics
+        controller.UpdateAnimations(MoveDir, Physics.CheckSphere(feetPosition.position, 0.1f, floorMask), false, false, false);
         rb.MovePosition(transform.position + MoveDir * Time.deltaTime);
-        controller.UpdateAnimations(MoveDir, false, false, false);
     }
 }
