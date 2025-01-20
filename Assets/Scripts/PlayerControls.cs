@@ -9,8 +9,6 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private Transform feetPosition;
     [SerializeField] private Transform playerCamera;
     private Rigidbody rb;
-
-    //Players input
     private Vector3 playerMoveInput;
 
 
@@ -20,17 +18,15 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float lookSpeed;
-    //Bools to keep track what state they are currently in
-    private float rotX;
+    //Timers to keep track what state they are currently in
     float runTimer;
-    [SerializeField] float landTimer;
-    public enum MoveState { IDLE, WALK, DASH, SNEAK, DEATH };
-    private MoveState moveState;
+    float landTimer;
+    [SerializeField] float bubbleTimer;
+    [SerializeField] bool inBubble;
+    float bubbleDrag;
 
     private void Start()
     {
-        //Set the state to idle
-        moveState = MoveState.IDLE;
         rb = transform.GetComponent<Rigidbody>();
         controller = transform.GetChild(0).GetComponent<AnimationController>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -38,38 +34,75 @@ public class PlayerControls : MonoBehaviour
     //Update once a frame
     void Update()
     {
+        bool grounded = Physics.CheckSphere(feetPosition.position, 0.1f, floorMask);
         if (manager.GetTimer() > 0)
         {
-
+            //Movement
             playerMoveInput = new(0, 0, Input.GetAxis("Horizontal"));
-            //Gets the camera's input and run its function
-            //Jump Function
+            //Jump
             if (Input.GetKeyDown(KeyCode.Space) && landTimer <= 0)
             {
                 //Check if the feet GameObject are on the ground that has a layer called 'Ground'
-                if (Physics.CheckSphere(feetPosition.position, 0.1f, floorMask))
-                {
+                if (grounded)
                     Jump();
-                }
             }
-            if (landTimer > 0 && Physics.CheckSphere(feetPosition.position, 0.1f, floorMask))
-            {
-                rb.velocity = Vector3.zero;
-                landTimer -= Time.deltaTime;
-                controller.UpdateAnimations(playerMoveInput, true, false, false, false);
-                playerMoveInput = new(0, 0, 0);
-            }
+            //Run
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 speed = 10;
-            if (playerMoveInput == Vector3.zero && speed == 10)
-                runTimer -= Time.deltaTime;
-            if (runTimer <= 0)
+            //Bubbling
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                speed = 5;
-                runTimer = 0.125f;
+                BubbleStart();
             }
+            if(inBubble)
+            {
+                if(rb.velocity.y <= 0 && !grounded && rb.useGravity)
+                {
+                    rb.useGravity = false;
+                    bubbleTimer = 3f;
+                    bubbleDrag = 0;
+                }
+            }
+            //Bubble Timer to slowly Lower the player, getting faster the longer they are in the bubble
+            if (bubbleTimer > 0)
+            {
+                bubbleTimer -= Time.deltaTime;
+            }
+            if (bubbleTimer <= 0 && inBubble && !rb.useGravity)
+            {
+                bubbleDrag += Time.deltaTime;
+                rb.AddForce(Vector3.down * bubbleDrag);
+                if(grounded && bubbleDrag != 0)
+                {
+                    inBubble = false;
+                    rb.useGravity = true;
+                }
+            }
+            //Landing Timer to hold the player in place once they land
+            if (landTimer > 0)
+            {
+                if (grounded)
+                {
+                    landTimer -= Time.deltaTime;
+                    rb.velocity = Vector3.zero;
+                    playerMoveInput = new(0, 0, 0);
+                }
+            }
+            //Runner Timer to only disable when idling (allows switching while keeping running)
+            if (playerMoveInput == Vector3.zero && speed == 10)
+            {
+                runTimer -= Time.deltaTime;
+                if (runTimer <= 0)
+                {
+                    speed = 5;
+                    runTimer = 0.125f;
+                }
+            }
+
+            //Animation Data Every Frame
+            Vector2 displacement = new(playerMoveInput.z, rb.velocity.y);
+            controller.UpdateAnimations(displacement, grounded, inBubble);
         }
-        
     }
     //FixedUpdate can run multiple times per frame
     private void FixedUpdate()
@@ -79,10 +112,15 @@ public class PlayerControls : MonoBehaviour
             MovePlayer();
         }
     }
+    void BubbleStart()
+    {
+        Jump();
+        inBubble = true;
+    }
     void Jump()
     {
         rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
-        landTimer = 0.65f;
+        landTimer = 0.85f;
     }
     void MovePlayer()
     {
@@ -91,7 +129,7 @@ public class PlayerControls : MonoBehaviour
         //Setting the Y velocity aswell
         MoveDir.y = rb.velocity.y;
         //Calculates and then applies then input with rigidbody's Physics
-        controller.UpdateAnimations(MoveDir, Physics.CheckSphere(feetPosition.position, 0.1f, floorMask), false, false, false);
+
         rb.MovePosition(transform.position + MoveDir * Time.deltaTime);
     }
 }

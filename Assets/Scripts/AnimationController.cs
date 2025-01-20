@@ -17,23 +17,9 @@ public class AnimationController : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void UpdateAnimations(Vector3 velocity, bool grounded, bool bubbled, bool pressingButton, bool timedOut)
+    public void UpdateAnimations(Vector3 velocity, bool grounded, bool bubbled)
     {
-        //Timeout, Button press, Bubble, Jumping, Falling, Running, Walking, Idle 
-        if (timedOut)
-        {
-            //TimeOut
-        }
-        if (isPressingButton)
-        {
-            //Button Press Actions
-            return;
-        }
-        else if (inBubble)
-        {
-            //Bubble Actions
-            return;
-        }
+        anim.SetBool("Bubbled", bubbled);
         anim.SetInteger("xVelocity", (int)velocity.x);
         anim.SetInteger("yVelocity", (int)velocity.y);
         anim.SetBool("OnGround", grounded);
