@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     bool escKeyDown = false;
     public Canvas pauseMenu;
+    public Canvas optionsMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,12 @@ public class UIManager : MonoBehaviour
                 escKeyDown = true;
                 if (pauseMenu.enabled)
                 {
-                    GameManager.Instance.Unpause();
+                    GameManager.Instance.Pause();
                 }
                 else
                 {
-                    GameManager.Instance.Pause();
+                    GameManager.Instance.Unpause();
+                    optionsMenu.enabled = false;   
                 }
             }
         }
@@ -41,5 +44,15 @@ public class UIManager : MonoBehaviour
     public void BackToGame()
     {
         pauseMenu.enabled = false;
+        optionsMenu.enabled = false;
+    }
+    public void TitleScreen()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void OptionsMenu()
+    {
+        pauseMenu.enabled = false;
+        optionsMenu.enabled = true;
     }
 }
