@@ -25,15 +25,15 @@ public class UIManager : MonoBehaviour
             {
                 pauseMenu.enabled = !pauseMenu.enabled;
                 escKeyDown = true;
-                if (pauseMenu.enabled)
-                {
-                    GameManager.Instance.Pause();
-                }
-                else
-                {
-                    GameManager.Instance.Unpause();
-                    optionsMenu.enabled = false;   
-                }
+//                if (pauseMenu.enabled)
+  //              {
+    //                GameManager.Instance.Pause();
+      //          }
+        //        else
+          //      {
+            //        GameManager.Instance.Unpause();
+              //      optionsMenu.enabled = false;   
+                //}
             }
         }
         else
