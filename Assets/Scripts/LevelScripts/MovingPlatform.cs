@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -23,6 +24,8 @@ public class MovingPlatform : MonoBehaviour
         StartCoroutine(MovePlatform(targetPosition));
     }
 
+
+    
     IEnumerator MovePlatform(Vector3 targetPos)
     {
         while (true)
@@ -33,7 +36,7 @@ public class MovingPlatform : MonoBehaviour
                 platform.transform.position = Vector3.MoveTowards(platform.transform.position, targetPos, speed * Time.fixedDeltaTime);
                 yield return null;
             }
-
+            Distance = Vector3.zero;
             targetPos = targetPos == pointA.position ? pointB.position : pointA.position;
 
             yield return new WaitForSeconds(Delay);

@@ -26,6 +26,7 @@ public class PlayerControls : MonoBehaviour
     float bubbleDrag;
     bool jump;
     [SerializeField] bool onFan;
+    [SerializeField] Vector3 fanForce;
     [SerializeField] Vector3 displacement;
     private void Start()
     {
@@ -131,7 +132,7 @@ public class PlayerControls : MonoBehaviour
             if (inBubble)
                 rb.AddForce(Vector3.up, ForceMode.Force);
             else
-                rb.AddForce(new(0, 15f, 0), ForceMode.Force);
+                rb.AddForce(fanForce, ForceMode.Force);
 
         }
         //Total Move Direction for the frame
@@ -148,16 +149,43 @@ public class PlayerControls : MonoBehaviour
         jump = false;
     }
 
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Crumble") && collision != null)
+        {
+            StartCoroutine(collision.gameObject.transform.parent.GetComponent<Collapsable>().Break());
+        }
+        if (collision.gameObject.CompareTag("Moving"))
+        {
+            displacement = collision.gameObject.GetComponentInParent<MovingPlatform>().GetDisplacement();
+        }
+    }
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Moving"))
+        {
+            displacement = Vector3.zero;
+        }
+    }
+
+
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Fan"))
+        if (other.CompareTag("Fan"))
         {
+            fanForce = other.GetComponent<FanController>().GetForce();
             onFan = true;
         }
-        if(other.CompareTag("Moving"))
+    }
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Fan"))
         {
-            displacement = other.GetComponentInParent<MovingPlatform>().GetDisplacement();
+            fanForce = other.GetComponent<FanController>().GetForce();
+            onFan = true;
         }
+
     }
     public void OnTriggerExit(Collider other)
     {
@@ -165,16 +193,6 @@ public class PlayerControls : MonoBehaviour
         {
             onFan = false;
         }
-        if (other.CompareTag("Moving"))
-        {
-            displacement = Vector3.zero;
-        }
     }
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Moving"))
-        {
-            displacement = other.GetComponentInParent<MovingPlatform>().GetDisplacement();
-        }
-    }
+
 }
