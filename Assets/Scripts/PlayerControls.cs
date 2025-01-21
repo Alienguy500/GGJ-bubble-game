@@ -24,7 +24,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float bubbleTimer;
     [SerializeField] bool inBubble;
     float bubbleDrag;
-
+    bool jump;
+    [SerializeField] bool onFan;
+    [SerializeField] Vector3 displacement;
     private void Start()
     {
         rb = transform.GetComponent<Rigidbody>();
@@ -119,17 +121,60 @@ public class PlayerControls : MonoBehaviour
     }
     void Jump()
     {
-        rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        jump = true;
         landTimer = 0.85f;
     }
     void MovePlayer()
     {
+        if (onFan)
+        {
+            if (inBubble)
+                rb.AddForce(Vector3.up, ForceMode.Force);
+            else
+                rb.AddForce(new(0, 15f, 0), ForceMode.Force);
+
+        }
         //Total Move Direction for the frame
         Vector3 MoveDir = transform.TransformDirection(playerMoveInput) * speed;
         //Setting the Y velocity aswell
         MoveDir.y = rb.velocity.y;
         //Calculates and then applies then input with rigidbody's Physics
 
-        rb.MovePosition(transform.position + MoveDir * Time.deltaTime);
+        rb.MovePosition(transform.position + (MoveDir * Time.deltaTime) + (-displacement * 5));
+        if (jump)
+        {
+            rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        }
+        jump = false;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Fan"))
+        {
+            onFan = true;
+        }
+        if(other.CompareTag("Moving"))
+        {
+            displacement = other.GetComponentInParent<MovingPlatform>().GetDisplacement();
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Fan"))
+        {
+            onFan = false;
+        }
+        if (other.CompareTag("Moving"))
+        {
+            displacement = Vector3.zero;
+        }
+    }
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Moving"))
+        {
+            displacement = other.GetComponentInParent<MovingPlatform>().GetDisplacement();
+        }
     }
 }
