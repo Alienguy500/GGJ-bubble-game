@@ -9,10 +9,6 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         tracks = GetComponents<AudioSource>();
-        for (int i = 0; i < tracks.Length; i++)
-        {
-            SetTrackMute(i, false);
-        }
     }
 
     // Update is called once per frame
