@@ -13,14 +13,24 @@ public class GameManager : MonoBehaviour
     public SoundManager soundManager;
     public MusicManager musicManager;
 
-    void Start()
+    void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(instance);
         soundManager = mainCamera.GetComponent<SoundManager>();
         musicManager = mainCamera.GetComponent<MusicManager>();
     }
     public int GetTimer()
     {
         return 1;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+    public void Unpause()
+    {
+        Time.timeScale = 1f;
     }
 }
