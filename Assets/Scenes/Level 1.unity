@@ -929,6 +929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   Delay: 0
+  Distance: {x: 0, y: 0, z: 0}
 --- !u!4 &374845414
 Transform:
   m_ObjectHideFlags: 0
@@ -4453,6 +4454,7 @@ MonoBehaviour:
   bubbleTimer: 0
   inBubble: 0
   onFan: 0
+  displacement: {x: 0, y: 0, z: 0}
 --- !u!136 &2084419891
 CapsuleCollider:
   m_ObjectHideFlags: 0
