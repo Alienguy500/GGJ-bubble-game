@@ -474,6 +474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045fc74ab38deb14e83d24443f7cacbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  soundManager: {fileID: 0}
+  musicManager: {fileID: 0}
 --- !u!4 &302578664
 Transform:
   m_ObjectHideFlags: 0
@@ -1291,6 +1294,8 @@ MonoBehaviour:
   speed: 10
   jumpSpeed: 10
   lookSpeed: 5
+  bubbleTimer: 0
+  inBubble: 0
 --- !u!136 &2084419891
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1359,6 +1364,63 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 88
   m_CollisionDetection: 0
+--- !u!1001 &517388729068114618
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907026685566498942, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146452254910265987, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
+      propertyPath: m_Name
+      value: Van
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5b61c7cf997ce845b36934ad1e10bb7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1369,3 +1431,4 @@ SceneRoots:
   - {fileID: 279169978}
   - {fileID: 2084419894}
   - {fileID: 1871529827}
+  - {fileID: 517388729068114618}
