@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Testing Scene.unity.meta
 guid: d003d28e244eccb4782ce1cbda1d4569
+========
+guid: 5b3eb6dd2cce57349a7a7b568e01a7fe
+>>>>>>>> ba6f711e5fec9477c7eab7d8cab8bda304f072bc:Assets/Scenes/Level 1.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
