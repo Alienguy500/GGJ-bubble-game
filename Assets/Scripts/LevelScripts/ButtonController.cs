@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchController : MonoBehaviour
+public class ButtonController : MonoBehaviour
 {
     Animator animator;
     AudioSource audioSource;
@@ -10,8 +10,6 @@ public class SwitchController : MonoBehaviour
     bool isisOnOn;
     public bool isOn = false;
     bool collidingWithPlayer = false;
-    bool lockInput = false;
-    public bool isButton = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,32 +44,16 @@ public class SwitchController : MonoBehaviour
         
         if (collidingWithPlayer)
         {
-            if (isButton)
+    
+            if (Input.GetKey("e"))
             {
-                if (Input.GetKey("e"))
-                {
-                    animator.SetBool("isOn", true);
-                }
-                else
-                {
-                    animator.SetBool("isOn", false);
-                }
+                animator.SetBool("isOn", true);
             }
             else
             {
-                if (!lockInput)
-                {
-                    if (Input.GetKey("e"))
-                    {
-                        animator.SetBool("isOn", !isOn);
-                        lockInput = true;
-                    }
-                }
-                else if (!Input.GetKey("e"))
-                {
-                    lockInput = false;
-                }
+                animator.SetBool("isOn", false);
             }
+            
         }
         
     }
