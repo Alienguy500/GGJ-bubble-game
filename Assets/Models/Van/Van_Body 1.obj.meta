@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 3e9a2b5268f7bb1479cb9fc40fb81d17
+guid: 5c65c2c8ef389f8408bd30ccc0ee01c4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Traspernet
-    second: {fileID: 2100000, guid: 4801d73a7c6ad2b479ebb7edc3a8e9f3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 86fffd57ab3f2634ba78d006e63f11a1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: a223f408f9b9bec49acfbabc11a37858, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
