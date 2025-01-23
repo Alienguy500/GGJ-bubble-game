@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class MusicManager : MonoBehaviour
 {
     public AudioSource[] tracks;
     private int currentTrack = 0;
+    public TMP_Text progressMarker;
+    public AudioSource losingSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,21 @@ public class MusicManager : MonoBehaviour
     {
         tracks[trackIndex].mute = mute;
     }
+    public void SetAllTracksMute(bool mute)
+    {
+        foreach (var track in tracks)
+        {
+            track.mute = mute;
+            print("Muted");
+        }
+    }
+    public void StopAllTracks()
+    {
+        foreach (var track in tracks)
+        {
+            track.enabled = false;
+        }
+    }
     public void SetTrackVolume(int trackIndex, float volume) // Volume can be anything from 0.0f to 1.0f
     {
         tracks[trackIndex].volume = volume;
@@ -30,5 +49,6 @@ public class MusicManager : MonoBehaviour
     {
         currentTrack++;
         SetTrackMute(currentTrack, false);
+        progressMarker.text = "Levers Flipped: " + currentTrack + "/6";
     }
 }

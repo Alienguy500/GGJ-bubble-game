@@ -8,20 +8,22 @@ public class CountDown : MonoBehaviour
 {
     public float countDown;
     public TMP_Text countdownDisplay;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        countDown = 240f;
-    }
+    public AudioSource losingSound;
+    bool soundPlayed = false;
 
     // Update is called once per frame
     void Update()
     {
         countDown -= Time.deltaTime;
-        countdownDisplay.text = countDown.ToString();
+        countdownDisplay.text = "Time Left: "+Mathf.RoundToInt(countDown).ToString();
         if (countDown < 0)
         {
+            if (!soundPlayed)
+            {
+                GameManager.Instance.musicManager.StopAllTracks();
+                losingSound.Play();
+                soundPlayed = true;
+            }
             Time.timeScale = 0;
         }
     }
