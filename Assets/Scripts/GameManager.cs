@@ -7,13 +7,20 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance
     {
-        get;
+        get
+        {
+            if (instance == null)
+            
+                instance = FindObjectOfType<GameManager>();
+            return instance;
+        }
+        set => instance = value;
     }
     public GameObject mainCamera;
     public SoundManager soundManager;
     public MusicManager musicManager;
 
-    void Awake()
+    private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(instance);

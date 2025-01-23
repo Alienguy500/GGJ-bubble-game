@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SwitchController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class SwitchController : MonoBehaviour
     bool collidingWithPlayer = false;
     bool lockInput = false;
     public bool isButton = false;
+
+    [Header("Drag a script here")]
+    public UnityEvent valueChange;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,7 @@ public class SwitchController : MonoBehaviour
             {
                 isisOnOn = true;
                 audioSource.Play();
+                OnValueChange();
             }
         }
         else
@@ -41,6 +46,7 @@ public class SwitchController : MonoBehaviour
             {
                 isisOnOn = false;
                 audioSource.Play();
+                OnValueChange();
             }
         }
         
@@ -88,5 +94,9 @@ public class SwitchController : MonoBehaviour
         {
             collidingWithPlayer = false;
         }
+    }
+    void OnValueChange()
+    {
+        valueChange.Invoke();
     }
 }
