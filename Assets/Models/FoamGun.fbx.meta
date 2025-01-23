@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 457887f861849f54ea58d0287b2f2202
+guid: d44d512c3e8b0f04dafd91752746c532
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,11 +8,6 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: a0cdf7839fe944b4c982134419286179, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: defaultMat
     second: {fileID: 2100000, guid: e1b866b466088ce4e9a81489998565ea, type: 2}
   materials:
     materialImportMode: 2
@@ -46,7 +41,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 2
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -78,14 +73,14 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    strictVertexDataChecks: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 2
-    tangentImportMode: 2
+    normalImportMode: 0
+    tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 2
+    blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
