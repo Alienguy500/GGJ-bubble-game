@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(instance);
+        //DontDestroyOnLoad(instance);
         soundManager = mainCamera.GetComponent<SoundManager>();
         musicManager = mainCamera.GetComponent<MusicManager>();
     }
