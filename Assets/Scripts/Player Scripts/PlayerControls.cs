@@ -50,7 +50,7 @@ public class PlayerControls : MonoBehaviour
             }
             //Run
             if (Input.GetKeyDown(KeyCode.LeftShift))
-                speed = 12;
+                speed = 10;
             //Bubbling
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -91,7 +91,7 @@ public class PlayerControls : MonoBehaviour
                 }
             }
             //Runner Timer to only disable when idling (allows switching while keeping running)
-            if (playerMoveInput == Vector3.zero && speed == 12)
+            if (playerMoveInput == Vector3.zero && speed == 10)
             {
                 runTimer -= Time.deltaTime;
                 if (runTimer <= 0)

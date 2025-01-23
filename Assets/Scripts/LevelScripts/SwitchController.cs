@@ -66,15 +66,7 @@ public class SwitchController : MonoBehaviour
                         lockInput = true;
                     }
                 }
-                else if (!Input.GetKey("e"))
-                {
-                    lockInput = false;
-                }
             }
-        }
-        else if (isButton)
-        {
-            animator.SetBool("isOn", false);
         }
         
     }

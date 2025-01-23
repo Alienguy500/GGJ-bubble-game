@@ -5,6 +5,7 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     public AudioSource[] tracks;
+    private int currentTrack = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,10 @@ public class MusicManager : MonoBehaviour
     public void SetTrackVolume(int trackIndex, float volume) // Volume can be anything from 0.0f to 1.0f
     {
         tracks[trackIndex].volume = volume;
+    }
+    public void PlayNextTrack()
+    {
+        currentTrack++;
+        SetTrackMute(currentTrack, false);
     }
 }
