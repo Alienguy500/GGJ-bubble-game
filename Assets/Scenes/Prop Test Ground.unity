@@ -12307,7 +12307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05141beccc3d7844da1a6393771f6837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countDown: 16
+  countDown: 240
   countdownDisplay: {fileID: 1782669025}
   losingSound: {fileID: 402491273}
 --- !u!82 &402491273
