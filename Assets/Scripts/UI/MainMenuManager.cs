@@ -25,7 +25,7 @@ public class MainMenuManager : MonoBehaviour
     public void Play()
     {
         Debug.Log("hi");
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Testing Scene");
     }
     public void Quit()
     {
