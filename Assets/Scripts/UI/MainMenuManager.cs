@@ -25,7 +25,7 @@ public class MainMenuManager : MonoBehaviour
     public void Play()
     {
         Debug.Log("hi");
-        SceneManager.LoadScene("Testing Scene");
+        SceneManager.LoadScene("Prop Test Ground");
     }
     public void Quit()
     {
