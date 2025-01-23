@@ -1,16 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class Collapsable : MonoBehaviour
 {
 
     public IEnumerator Break()
     {
-        GetComponent<Animator>().SetTrigger("Crack");
+        GetComponent<Animator>().SetBool("SteppedOn", true);
         yield return new WaitForSeconds(1);
-        GetComponent<Animator>().SetTrigger("Break");
+        GetComponent<Animator>().SetBool("Broke", true);
+        StartCoroutine(Repair());
+    }
+    IEnumerator Repair()
+    {
+        float Timer = 15;
+        while (Timer > 0)
+        {
+            Timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        GetComponent<Animator>().SetBool("SteppedOn", false);
+        GetComponent<Animator>().SetBool("Broke", false);
+        GetComponent<Animator>().SetBool("Repair", true);
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        GetComponent<Animator>().SetBool("Repair", false);
     }
 }

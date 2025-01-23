@@ -22,8 +22,10 @@ public class PlayerControls : MonoBehaviour
     float landTimer;
     [SerializeField] float bubbleTimer;
     [SerializeField] bool inBubble;
+    float multiplier;
     float bubbleDrag;
     bool jump;
+    bool jumped;
     [SerializeField] bool onFan;
     [SerializeField] Vector3 fanForce;
     [SerializeField] Vector3 displacement;
@@ -39,6 +41,7 @@ public class PlayerControls : MonoBehaviour
         bool grounded = Physics.CheckSphere(feetPosition.position, 0.1f, floorMask);
         if (manager.GetTimer() > 0)
         {
+            controller.BubbleBlow(false);
             //Movement
             playerMoveInput = new(0, 0, Input.GetAxisRaw("Horizontal"));
             //Jump
@@ -52,13 +55,11 @@ public class PlayerControls : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 speed = 10;
             //Bubbling
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q) && !inBubble && !grounded)
             {
-                BubbleStart();
-            }
-            if(inBubble)
-            {
-                if(rb.velocity.y <= 0 && !grounded && rb.useGravity)
+                controller.BubbleBlow(true);
+                inBubble = true;
+                if (rb.useGravity && rb.velocity.y > 0)
                 {
                     rb.useGravity = false;
                     bubbleTimer = 3f;
@@ -76,6 +77,7 @@ public class PlayerControls : MonoBehaviour
                 rb.AddForce(Vector3.down * bubbleDrag);
                 if(grounded && bubbleDrag != 0)
                 {
+
                     inBubble = false;
                     rb.useGravity = true;
                 }
@@ -100,10 +102,11 @@ public class PlayerControls : MonoBehaviour
                     runTimer = 0.125f;
                 }
             }
-
+            if(rb.velocity.y < 0 && jumped)
+                jumped = false;
             //Animation Data Every Frame
             Vector2 displacement = new(playerMoveInput.z * speed, rb.velocity.y);
-            controller.UpdateAnimations(displacement, grounded, inBubble);
+            controller.UpdateAnimations(displacement, grounded, inBubble, jumped);
         }
     }
     //FixedUpdate can run multiple times per frame
@@ -114,25 +117,25 @@ public class PlayerControls : MonoBehaviour
             MovePlayer();
         }
     }
-    void BubbleStart()
-    {
-        Jump();
-        inBubble = true;
-    }
     void Jump()
     {
         jump = true;
+        jumped = true;
         landTimer = 0.85f;
     }
     void MovePlayer()
     {
-        if (onFan)
+        if (inBubble)
+            multiplier = 1.5f;
+        else
+            multiplier = 1f;
+        if (onFan && fanForce != Vector3.zero)
         {
             if (inBubble)
-                rb.AddForce(Vector3.up, ForceMode.Force);
+                rb.AddForce(fanForce * multiplier, ForceMode.Force);
             else
                 rb.AddForce(fanForce, ForceMode.Force);
-
+            landTimer = 0.85f;
         }
         //Total Move Direction for the frame
         Vector3 MoveDir = transform.TransformDirection(playerMoveInput) * speed;

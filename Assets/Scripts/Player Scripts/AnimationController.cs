@@ -5,21 +5,21 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     private Animator anim;
-
-
-    private bool inBubble;
-    private bool isPressingButton;
-    private bool timedOut;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
+    public void BubbleBlow(bool bol)
+    {
+        anim.SetBool("Bubbling", bol);
+    }    
     // Update is called once per frame
-    public void UpdateAnimations(Vector3 velocity, bool grounded, bool bubbled)
+    public void UpdateAnimations(Vector3 velocity, bool grounded, bool bubbled, bool jumped)
     {
         anim.SetBool("Bubbled", bubbled);
+        anim.SetBool("Jumped", jumped);
         anim.SetInteger("xVelocity", (int)velocity.x);
         anim.SetInteger("yVelocity", (int)velocity.y);
         anim.SetBool("OnGround", grounded);
