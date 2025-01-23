@@ -136,6 +136,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor_Brakeable Pice1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b79ca1c87b7b78042a9de21a017ef32d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b79ca1c87b7b78042a9de21a017ef32d, type: 3}
+      propertyPath: m_TagString
+      value: Crumble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b79ca1c87b7b78042a9de21a017ef32d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -239,6 +251,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 47634293323ec094886ee0f675403b98, type: 3}
       propertyPath: m_Name
       value: Floor_Brakeable Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 47634293323ec094886ee0f675403b98, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 47634293323ec094886ee0f675403b98, type: 3}
+      propertyPath: m_TagString
+      value: Crumble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 47634293323ec094886ee0f675403b98, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -344,6 +368,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor_Brakeable Pice2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4da013e232530d145a5fb23596569e5c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4da013e232530d145a5fb23596569e5c, type: 3}
+      propertyPath: m_TagString
+      value: Crumble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4da013e232530d145a5fb23596569e5c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -447,6 +483,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b79ca1c87b7b78042a9de21a017ef32d, type: 3}
       propertyPath: m_Name
       value: Floor_Brakeable Pice1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b79ca1c87b7b78042a9de21a017ef32d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b79ca1c87b7b78042a9de21a017ef32d, type: 3}
+      propertyPath: m_TagString
+      value: Crumble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b79ca1c87b7b78042a9de21a017ef32d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -552,6 +600,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor_Brakeable Pice2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4da013e232530d145a5fb23596569e5c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4da013e232530d145a5fb23596569e5c, type: 3}
+      propertyPath: m_TagString
+      value: Crumble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4da013e232530d145a5fb23596569e5c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -655,6 +715,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 47634293323ec094886ee0f675403b98, type: 3}
       propertyPath: m_Name
       value: Floor_Brakeable Base (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 47634293323ec094886ee0f675403b98, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 47634293323ec094886ee0f675403b98, type: 3}
+      propertyPath: m_TagString
+      value: Crumble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 47634293323ec094886ee0f675403b98, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
