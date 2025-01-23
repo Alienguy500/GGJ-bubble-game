@@ -26,7 +26,6 @@ public class FanController : MonoBehaviour
         while (true)
         {
             audioSource.Play();
-            Debug.Log("Sound is playing");
             while (Timer > 0)
             {
                 Timer -= Time.deltaTime;
