@@ -10,11 +10,13 @@ public class FanController : MonoBehaviour
 
     private ParticleSystem particles;
     [SerializeField] private Collider fanCollider;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         fanCollider = GetComponent<Collider>();
         particles = transform.GetChild(0).GetComponent<ParticleSystem>();
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(FanRun());
     }
 
@@ -23,6 +25,8 @@ public class FanController : MonoBehaviour
         float Timer = 15;
         while (true)
         {
+            audioSource.Play();
+            Debug.Log("Sound is playing");
             while (Timer > 0)
             {
                 Timer -= Time.deltaTime;
