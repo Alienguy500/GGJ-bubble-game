@@ -49,6 +49,6 @@ public class MusicManager : MonoBehaviour
     {
         currentTrack++;
         SetTrackMute(currentTrack, false);
-        progressMarker.text = "Levers Flipped: " + currentTrack + "/6";
+        progressMarker.text = "Switches Flipped: " + currentTrack + "/5";
     }
 }
