@@ -17,7 +17,6 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpSpeed;
-    [SerializeField] private float lookSpeed;
     //Timers to keep track what state they are currently in
     float runTimer;
     float landTimer;
@@ -41,7 +40,7 @@ public class PlayerControls : MonoBehaviour
         if (manager.GetTimer() > 0)
         {
             //Movement
-            playerMoveInput = new(0, 0, Input.GetAxis("Horizontal"));
+            playerMoveInput = new(0, 0, Input.GetAxisRaw("Horizontal"));
             //Jump
             if (Input.GetKeyDown(KeyCode.Space) && landTimer <= 0)
             {
@@ -51,7 +50,7 @@ public class PlayerControls : MonoBehaviour
             }
             //Run
             if (Input.GetKeyDown(KeyCode.LeftShift))
-                speed = 10;
+                speed = 12;
             //Bubbling
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -92,18 +91,18 @@ public class PlayerControls : MonoBehaviour
                 }
             }
             //Runner Timer to only disable when idling (allows switching while keeping running)
-            if (playerMoveInput == Vector3.zero && speed == 10)
+            if (playerMoveInput == Vector3.zero && speed == 12)
             {
                 runTimer -= Time.deltaTime;
                 if (runTimer <= 0)
                 {
-                    speed = 5;
+                    speed = 7;
                     runTimer = 0.125f;
                 }
             }
 
             //Animation Data Every Frame
-            Vector2 displacement = new(playerMoveInput.z, rb.velocity.y);
+            Vector2 displacement = new(playerMoveInput.z * speed, rb.velocity.y);
             controller.UpdateAnimations(displacement, grounded, inBubble);
         }
     }

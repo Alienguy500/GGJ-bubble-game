@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 140082026364536787}
   - component: {fileID: 4707660855533472124}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293684993172871115}
   - component: {fileID: 2537585881234696401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor_Flat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493303654566311137}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.000015020369}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: -0.000017414575}
   m_LocalPosition: {x: 83.33914, y: -1.6069, z: -42.92}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3405447743738066515}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform_Flat 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 8045299906944601386}
   - component: {fileID: 8860921625724373872}
   - component: {fileID: 2427987834559183059}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,9 +273,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 778011480144988654, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074940440259061357, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8003171032581799067, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
       propertyPath: m_Name
       value: Platform_C (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003171032581799067, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593368031685816631, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -347,9 +363,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 778011480144988654, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074940440259061357, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8003171032581799067, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
       propertyPath: m_Name
       value: Platform_C (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003171032581799067, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593368031685816631, guid: ea1c84249609e664cbc24f86e2f22f08, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
