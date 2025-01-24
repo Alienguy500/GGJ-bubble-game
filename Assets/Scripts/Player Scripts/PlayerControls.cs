@@ -143,7 +143,7 @@ public class PlayerControls : MonoBehaviour
         MoveDir.y = rb.velocity.y;
         //Calculates and then applies then input with rigidbody's Physics
 
-        rb.MovePosition(transform.position + (MoveDir * Time.deltaTime) + (-displacement * 5));
+        rb.MovePosition(transform.position + (MoveDir * Time.deltaTime) + (-displacement));
         if (jump)
         {
             rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
@@ -158,8 +158,13 @@ public class PlayerControls : MonoBehaviour
         {
             StartCoroutine(collision.gameObject.transform.parent.GetComponent<Collapsable>().Break());
         }
+    }
+    public void OnCollisionStay(Collision collision)
+    {
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Moving"))
         {
+            Debug.Log("dsgsdfgsdfsdf");
             displacement = collision.gameObject.GetComponentInParent<MovingPlatform>().GetDisplacement();
         }
     }
