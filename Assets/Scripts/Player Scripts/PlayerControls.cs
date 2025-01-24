@@ -29,6 +29,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] bool onFan;
     [SerializeField] Vector3 fanForce;
     [SerializeField] Vector3 displacement;
+    bool grounded;
     private void Start()
     {
         rb = transform.GetComponent<Rigidbody>();
@@ -38,7 +39,7 @@ public class PlayerControls : MonoBehaviour
     //Update once a frame
     void Update()
     {
-        bool grounded = Physics.CheckSphere(feetPosition.position, 0.1f, floorMask);
+        grounded = Physics.CheckSphere(feetPosition.position, 0.1f, floorMask);
         if (manager.GetTimer() > 0)
         {
             controller.BubbleBlow(false);
@@ -125,6 +126,18 @@ public class PlayerControls : MonoBehaviour
     }
     void MovePlayer()
     {
+        //Total Move Direction for the frame
+        Vector3 MoveDir = transform.TransformDirection(playerMoveInput) * speed;
+        //Setting the Y velocity aswell
+        MoveDir.y = rb.velocity.y;
+        //Calculates and then applies then input with rigidbody's Physics
+        rb.Move(transform.position + (MoveDir * Time.deltaTime) + (-displacement), transform.rotation);
+        if (jump)
+        {
+            rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        }
+        jump = false;
+
         if (inBubble)
             multiplier = 1.5f;
         else
@@ -135,20 +148,11 @@ public class PlayerControls : MonoBehaviour
                 rb.AddForce(fanForce * multiplier, ForceMode.Force);
             else
                 rb.AddForce(fanForce, ForceMode.Force);
-            landTimer = 0.85f;
+            if(!grounded)
+            {
+                landTimer = 0.85f;
+            }
         }
-        //Total Move Direction for the frame
-        Vector3 MoveDir = transform.TransformDirection(playerMoveInput) * speed;
-        //Setting the Y velocity aswell
-        MoveDir.y = rb.velocity.y;
-        //Calculates and then applies then input with rigidbody's Physics
-
-        rb.MovePosition(transform.position + (MoveDir * Time.deltaTime) + (-displacement));
-        if (jump)
-        {
-            rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
-        }
-        jump = false;
     }
 
 
@@ -161,10 +165,8 @@ public class PlayerControls : MonoBehaviour
     }
     public void OnCollisionStay(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Moving"))
         {
-            Debug.Log("dsgsdfgsdfsdf");
             displacement = collision.gameObject.GetComponentInParent<MovingPlatform>().GetDisplacement();
         }
     }
