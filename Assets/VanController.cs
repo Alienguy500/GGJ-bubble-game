@@ -23,11 +23,6 @@ public class VanController : MonoBehaviour
     // Update is called once per frame
     public void UpdateAnimations()
     {
-        if (Count == 0)
-        {
-            StartCoroutine(MoveVehicle());
-            Speed = 0.5f;
-        }
         if(Count == 1)
         {
             VanBubbles.SetTrigger("Activate");
@@ -48,7 +43,7 @@ public class VanController : MonoBehaviour
         }
         if(Count == 4)
         {
-            Speed = 1f;
+            Speed = 0.5f;
         }
         Count++;
     }
