@@ -22,8 +22,8 @@ public class PlayerControls : MonoBehaviour
     float landTimer;
     [SerializeField] float bubbleTimer;
     [SerializeField] bool inBubble;
-    float multiplier;
-    float bubbleDrag;
+    [SerializeField] float multiplier;
+    [SerializeField] float bubbleDrag;
     bool jump;
     bool jumped;
     [SerializeField] bool onFan;
@@ -77,7 +77,7 @@ public class PlayerControls : MonoBehaviour
                 rb.AddForce(Vector3.down * bubbleDrag);
                 if(grounded && inBubble)
                 {
-
+                    bubbleDrag = 0;
                     inBubble = false;
                     rb.useGravity = true;
                 }

@@ -9,7 +9,7 @@ public class Collapsable : MonoBehaviour
     public IEnumerator Break()
     {
         GetComponent<Animator>().SetBool("SteppedOn", true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.75f);
         GetComponent<Animator>().SetBool("Broke", true);
         StartCoroutine(Repair());
     }

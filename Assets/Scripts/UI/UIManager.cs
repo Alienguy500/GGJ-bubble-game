@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
     }
     public void BackToGame()
     {
+        Time.timeScale = 1f;
         pauseMenu.enabled = false;
         optionsMenu.enabled = false;
     }
