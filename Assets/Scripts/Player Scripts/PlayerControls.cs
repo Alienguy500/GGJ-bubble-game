@@ -60,7 +60,7 @@ public class PlayerControls : MonoBehaviour
             {
                 controller.BubbleBlow(true);
                 inBubble = true;
-                if (rb.useGravity && rb.velocity.y < 0)
+                if (rb.useGravity && rb.velocity.y < 0f)
                 {
                     rb.useGravity = false;
                     bubbleTimer = 3f;

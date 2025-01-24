@@ -6,6 +6,7 @@ public class ExitDoor : MonoBehaviour
 {
     [SerializeField] MusicManager musicManager;
     [SerializeField] CountDown countDown;
+    [SerializeField] Transform fakePlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,8 @@ public class ExitDoor : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && musicManager.GetCurrentTrack() >= 5)
         {
-            other.gameObject.transform.position = new Vector3 (-79, 4, 32);
+            other.gameObject.transform.position = fakePlayer.transform.position;
+            fakePlayer.gameObject.SetActive(false);
             countDown.countDown = 5;
         }
     }

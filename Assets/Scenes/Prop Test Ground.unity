@@ -12789,7 +12789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05141beccc3d7844da1a6393771f6837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countDown: 240
+  countDown: 300
   countdownDisplay: {fileID: 1782669025}
   endSpotlight: {fileID: 4148836394531370075}
   losingSound: {fileID: 402491273}
@@ -34997,7 +34997,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicManager: {fileID: 1885145507}
-  countDown: {fileID: 0}
+  countDown: {fileID: 402491272}
+  fakePlayer: {fileID: 1777512017}
 --- !u!65 &1112550517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54107,6 +54108,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 293684993172871115, guid: 117c6dbdf2191fd4a9b49c6378307f80, type: 3}
   m_PrefabInstance: {fileID: 1206057781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1777512017 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6461843969297574894, guid: a30e67857d16299409c07452dd6b0500, type: 3}
+  m_PrefabInstance: {fileID: 5602005660231566279}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1780335360 stripped
 Transform:
