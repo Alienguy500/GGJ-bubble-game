@@ -59,7 +59,7 @@ public class PlayerControls : MonoBehaviour
             {
                 controller.BubbleBlow(true);
                 inBubble = true;
-                if (rb.useGravity && rb.velocity.y > 0)
+                if (rb.useGravity && rb.velocity.y < 0)
                 {
                     rb.useGravity = false;
                     bubbleTimer = 3f;
@@ -71,11 +71,11 @@ public class PlayerControls : MonoBehaviour
             {
                 bubbleTimer -= Time.deltaTime;
             }
-            if (bubbleTimer <= 0 && inBubble && !rb.useGravity)
+            if (bubbleTimer <= 0 && inBubble)
             {
                 bubbleDrag += Time.deltaTime;
                 rb.AddForce(Vector3.down * bubbleDrag);
-                if(grounded && bubbleDrag != 0)
+                if(grounded && inBubble)
                 {
 
                     inBubble = false;
