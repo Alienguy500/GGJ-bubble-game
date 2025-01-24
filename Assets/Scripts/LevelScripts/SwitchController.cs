@@ -13,6 +13,7 @@ public class SwitchController : MonoBehaviour
     bool collidingWithPlayer = false;
     bool lockInput = false;
     public bool isButton = false;
+    public GameObject marker;
 
     [Header("Drag a script here")]
     public UnityEvent valueChange;
@@ -37,6 +38,7 @@ public class SwitchController : MonoBehaviour
             {
                 isisOnOn = true;
                 audioSource.Play();
+                marker.SetActive(false);
                 OnValueChange();
             }
         }
