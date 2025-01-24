@@ -51,4 +51,8 @@ public class MusicManager : MonoBehaviour
         SetTrackMute(currentTrack, false);
         progressMarker.text = "Switches Flipped: " + currentTrack + "/5";
     }
+    public int GetCurrentTrack()
+    {
+        return currentTrack;
+    }
 }
