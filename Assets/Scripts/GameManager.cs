@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         //DontDestroyOnLoad(instance);
         soundManager = mainCamera.GetComponent<SoundManager>();
         musicManager = mainCamera.GetComponent<MusicManager>();
+        Time.timeScale = 1f;
     }
     public int GetTimer()
     {
